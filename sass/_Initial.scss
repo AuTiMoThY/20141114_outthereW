@@ -1,0 +1,81 @@
+.hide_txt {
+    @include hide_txt;
+}
+
+.wrapper {
+    @include wh($cnt_width, auto);
+    margin: 0 auto;
+    position: relative;
+	@include respond-to(L-screen) { width: 1100px; }
+	@include respond-to(M-screen) { width: 1000px; }
+	@include respond-to(S-screen) { width: 100%;}
+}
+.well {
+	width: $cnt_width;
+	margin: auto;
+	position: relative;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    @include bg('bg_mini.jpg', 0, 0, repeat);
+    @include background-size(cover);
+    // @include bg(scroll);
+	font-family: $normal_font;
+}
+
+[class*="row_"] {
+    width: 100%;
+}
+
+.ib {
+	@include ib;
+}
+
+[class*="col_"] {
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.pic {
+    img {
+        @include picImg;
+    }
+}
+
+.swing {
+    -webkit-transform-origin: 50% 80%;
+    -ms-transform-origin: 50% 80%;
+    transform-origin: 50% 80%;
+}
+
+.temp {
+    display: block;
+    margin: 0 auto;
+}
+
+.loading .ip-header {
+	&:before {
+		@include psudoClass;
+		@include wh;
+		@include bg('bg-loading.jpg', 50%, 50%);
+		@include background-size(cover);
+		@include opacity(0.5);
+	}
+}
+.ip-container , .ip-main{
+	height: 100%;
+}
+.ip-main>article#main {
+    padding-top: 2em;
+	padding-bottom: 5.5em;
+}
+.cnt_page {
+    #main {
+        margin-top: 8em;
+    }
+}

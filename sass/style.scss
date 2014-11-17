@@ -1,0 +1,438 @@
+@charset "UTF-8";
+
+/******************************************/
+/*          ada
+/*			by AuTiMoThY
+/******************************************/
+/*
+* TOC
+* 
+* btn
+* tab
+*  - ft ctrl
+* form input textarea
+* banner
+*  - page banner
+* logo svg color
+* header    logo
+*  - footer logo
+* path
+* nav  main nav
+* footer
+* index page
+* product page
+* news page
+* contact page
+*/
+
+@import "_variable";
+@import "_mixin";
+@import "_font.scss";
+@import "compass";
+@import "ceaser-easing";
+
+// @include font-face("expressway", font-files("expressway rg.ttf", "expressway rg.woff"));
+
+// @import _animate.sass
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+		Initial
+\*------------------------------------------------------------------------*/
+@import "_Initial";
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	btn
+\*========================================================================*/
+@import "module/_pageBtn";
+.btn {
+	@include bg(#727171);
+	// @include transition(all 0.3s ease-in-out);
+	// display: table;
+	a, input {
+		padding: 6px 13px;
+		color: #fff;
+		font-size: $fz-L;
+		font-weight: bolder;
+		letter-spacing: 1px;
+	}
+	a {
+		display: table-cell;
+	}
+	input {
+		border: none;
+		background: none;
+	}
+	&:hover {
+		@include bg(#007BBF);
+		@include box-shadow(1px 1px 3px #999);
+		a, input {
+			color: #fff;
+		}
+	}
+	&:active {
+		@include hover;
+	}
+	form.dataForm & {
+		display: inline-block;
+		input {
+			padding: 6px 18px;
+		}
+	}
+}
+.submit_btn {
+	margin-right: 10px;
+}
+.btn {
+    position: relative;
+    /*padding: 8px 30px;*/
+    border: 0;
+    /*margin: 10px 1px;*/
+    cursor: pointer;
+    border-radius: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(255, 255, 255, .84);
+    // -webkit-transition: box-shadow .28s cubic-bezier(0.4, 0, .2, 1);
+    // transition: box-shadow .28s cubic-bezier(0.4, 0, .2, 1);
+    @include transition(all 0.3s cubic-bezier(0.4, 0, .2, 1));
+    outline: 0!important
+}
+@import "_materialBtn";
+
+$amount: 20;
+$darken1: darken($logo_color1, $amount);
+$darken2: darken($logo_color2, $amount);
+.btns {
+	display: table;
+	margin: 0 auto;
+	input {
+		&.form_btn.form_btn {
+			@include wh(115px, 35px);
+			@include border-radius(10px);
+			margin-left: 0;
+			font-family: $normal_font;
+			&:hover {
+				@include hover;
+			}
+		}
+		&.form_btn.submit_btn {
+			@include bg($logo_color1);
+			@include box-shadow(2px -2px 0px $darken1);
+			&:hover {
+				@include box-shadow(2px -2px 5px $darken1);
+			}
+		}
+		&.form_btn.reset_btn {
+			@include bg($logo_color2);
+			@include box-shadow(2px -2px 0px $darken2);
+			&:hover {
+				@include box-shadow(2px -2px 5px $darken2);
+			}
+		}
+	}
+}
+a.buy_btn {
+	&.buy_btn.btn {
+		@include wh(143px, 36px);
+		@include bg($logo_color1);
+		@include border-radius(10px);
+		@include box-shadow(2px -2px 0px $darken1);
+		margin-left: 0;
+		position: absolute;
+		right: 5px;
+		bottom: 20px;
+		&:hover {
+			@include hover;
+			@include box-shadow(2px -2px 5px $darken1);
+		}
+		&:after {
+			@include psudoClass;
+			@include wh;
+			@include bg('iconTxt.png');
+			@include bg(-323px, -263px);
+			position: absolute;
+			top: 0;
+		}
+	}
+}
+a.go_list_btn {
+	&.go_list_btn.btn {
+		@include bg($logo_color1);
+		@include border-radius(20px);
+		padding: 5px 20px;
+		margin: 0 auto;
+		display: block;
+		letter-spacing: 1px;
+	}
+}
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	tab
+\*========================================================================*/
+$background: #9b59b6;
+$tabs-base-color: #fff;
+@import "module/_TABScodepen";
+.tabs {
+	&>li {
+		width: 33.33%;
+	}
+	label {
+		text-align: center;
+		border: 1px solid #d4d4d4;
+	}
+	.tab-content {
+		// border: 1px solid #d4d4d4;
+		// border-top: none;
+		// margin-bottom: 5.5em;
+		&>.container {
+			@extend %tabIEissue;
+		}
+	}
+}
+%tabIEissue {
+	border: 1px solid #d4d4d4;
+	border-top: none;
+	margin-bottom: 5.5em;
+	padding: 25px;
+}
+
+/*========================================================================*\
+		>>	ft ctrl
+\*========================================================================*/
+.ft-ctrl {
+	position: relative;
+	z-index: 40;
+	.btn.btn-default {
+		@include circle(76px);
+		@include bg($footer_color);
+		display: block;
+		position: absolute;
+		top: -30px;
+		// top: -35px;
+		left: 50%;
+		margin-left: -38px;
+		padding-top: 7px;
+		z-index: 30;
+		a {
+			@include wh(40px, 25px);
+			@include bg('iconTxt.png', -461px);
+			display: block;
+			margin: auto;
+			padding: 0;
+		}
+	}
+}
+
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	form input textarea
+\*========================================================================*/
+form input[type="text"], 
+form input[type="email"], 
+form input[type="password"],
+form input[type="telephone"],
+form textarea,
+form select {
+	// max-width:500px;
+	height: 30px;
+	background:#f4f4f4;
+	border:2px solid #bec2c5;
+	padding:4px 0;
+	color:#303030;
+	text-indent:8px;
+	@include box-shadow(inset 3px 3px 0 rgba(0,0,0,0.06));
+}
+form select {
+	@include box-shadow(none);
+	margin: 0;
+}
+
+
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	banner
+\*========================================================================*/
+// .flexslider {
+// 	border: none;
+// 	@include border-radius(0px);
+// 	@include box-shadow(none);
+// }
+@import "_CAROUSEL";
+
+.flex-viewport {
+	@include wh(100%, auto);
+	max-width: 1102px;
+}
+/*========================================================================*\
+		>>	page banner
+\*========================================================================*/
+.page_banner {
+	@include wh(100%, 375px);
+	@include background-size(cover);
+	@include transition(all 0.3s );
+	.about_page & {
+		@include bg('banner_about.jpg', 50%);
+	}
+	.product_page & {
+		@include bg('banner_product.jpg', 50%);
+	}
+	.news_page & {
+		@include bg('banner_news.jpg', 50%);
+	}
+	.contact_page & {
+		@include bg('banner_contact.jpg', 50%);
+	}
+	.links_page & {
+		@include bg('banner_links.jpg', 50%);
+	}
+}
+
+
+
+
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	logo svg color
+\*========================================================================*/
+svg#outthere-LOGO {
+	.c1 { fill: $logo_color1; }
+	.c2 { fill: $logo_color2; }
+	.c3 { fill: $logo_color1; }
+	.c4 { fill: $logo_color2; }
+	.c5 { fill: $logo_color2; }
+	.c6 { fill: $logo_color2; }
+}
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	header    logo
+\*========================================================================*/
+header {
+	&#headerWrap {
+		@include wh(100%, 15%);
+		max-height: 130px;
+		@include bg(rgba(255, 255, 255, 0.8));
+		position: fixed;
+		top: 0;
+		z-index: 90;
+		@include transition(all 0.3s $easeInOutCubic);
+		&:before {
+			@include psudoClass;
+			@include wh(100%, 5px);
+			@include bg('pattern.jpg', 50%);
+			@include background-size(cover);
+		}
+		.wrapper {
+			height: 100%;
+		}
+	}
+	&.logo {
+		@include wh(30%, 100%);
+		margin-left: 5px;
+		h2 {
+			height: 100%;
+			padding: 0;
+		}
+	}
+	@include atRoot {
+/*========================================================================*\
+		>>	footer logo
+\*========================================================================*/
+		&.footer_logo {  
+			// @include wh(173px, 66px);
+			svg#outthere-LOGO {
+				.c1 { fill: #fff; }
+				.c2 { fill: #fff; 
+					&:last-of-type {
+						fill: $footer_color;
+					}
+				}
+				.c3 { fill: #fff; }
+				.c4 { fill: #fff; }
+				.c5 { fill: #fff; }
+				.c6 { fill: #fff; }
+			}
+		}
+	};
+}
+
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	path
+\*========================================================================*/
+.path {
+	color: $footer_color;
+	font-size: $fz-N;
+	letter-spacing: 1px;
+	a {
+		color: $footer_color;
+		&:hover {
+			color: #428c01;
+		}
+	}
+	.txt4 {
+		color: #428c01;
+	}
+}
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	nav  main nav
+\*========================================================================*/
+@import "_nav";
+
+
+
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	footer
+\*========================================================================*/
+@import "_Footer";
+
+
+
+
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	index page
+\*========================================================================*/
+@import "_page_index";
+
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	product page
+\*========================================================================*/
+@import "_page_product";
+
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	news page
+\*========================================================================*/
+@import "_page_news";
+
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	contact page
+\*========================================================================*/
+@import "_page_contact";
+
+/*------------------------------------------------------------------------*\
+/*------------------------------------------------------------------------*\
+/*========================================================================*\
+		>	links page
+\*========================================================================*/
+@import "_page_links";
+
+

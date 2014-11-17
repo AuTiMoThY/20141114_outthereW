@@ -1,0 +1,39 @@
+.index-newsBlock {
+	ul {
+		width: 100%;
+	}
+	li {
+		width: 33%;
+		margin-left: 0.3em;
+		position: relative;
+		@include respond-to(L-screen) {}
+		@include respond-to(M-screen) {}
+		@include respond-to(S-screen) {
+			width: 100%;
+			margin-left: 0;
+		}
+		&:first-of-type {
+			margin-left: 0;
+		}
+		@each $news_block, $bgColor in (news_block-1, #f45600),
+									   (news_block-2, #68cbff),
+									   (news_block-3, #ffd510) {
+			&.#{$news_block} {
+				&:before {
+					@include psudoClass;
+					@include wh(100%, 5px);
+					@include bg($bgColor);
+				}
+			}
+		}
+	}
+	a {
+		display: block;
+		padding: 0;
+	}
+	.pic {
+		width: 100%;
+		height: 195px;
+		overflow: hidden;
+	}
+}
