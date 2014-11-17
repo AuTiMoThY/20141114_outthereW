@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+.tab-content {
+	.container {
+		width: 100%;
+		ul {
+			width: 100%;
+		}
+		li {
+			width: 100%;
+		}
+	}
+}
+/*========================================================================*\
+		>>	news page    new product
+\*========================================================================*/
+.new_prod_list {
+	&>ul {
+		padding: 0 40px;
+		&>li {
+			float: none;
+			margin-bottom: 1em;
+		}
+	}
+}
+.new_prod_item {
+	@include wh;
+	display: block;
+	margin: 0 auto;
+}
+/*========================================================================*\
+		>>	news page    promotion
+\*========================================================================*/
+.promotions {
+	// width: 100%;
+	font-size: $fz-N;
+	font-family: $normal_font2;
+	&-item {
+		float: none;
+		border-top: 1px solid $Grey_color5;
+		padding: 1.5em;
+		@include transition(all 0.3s $easing2);
+		&:first-of-type {
+			border-top: none;
+		}
+		&:hover {
+			@include bg(hsla(0, 0, 95%, 0.6));
+			h3 {
+				color: #428c00;
+			}
+		}
+		&>a {
+			display: block;
+		}
+		@include atRoot {
+			&-pic {
+				width: 40%;
+				.pic {
+					// max-width: none;
+				}
+				img {
+					border: 1px solid $Grey_color6;
+				}
+			}
+			&-cnt {
+				width: 59%;
+				padding-left: 10px;
+				h3 {
+					color: $DF_color2;
+					font-size: $fz-L;
+				}
+			}
+		};
+	}
+	&_txt {
+		@include wh(100%, 31px);
+		overflow: hidden;
+		color: $Grey_color4;
+		line-height: 1.2;
+	}
+	&_time {
+		color: #428c00;
+	}
+}
+#UsingJson {
+	border-top: 1px solid $Grey_color5;
+}
+/*========================================================================*\
+		>>	news page    sharing
+\*========================================================================*/
+.sharing {
+	font-size: $fz-N;
+	font-family: $normal_font2;
+	padding: 0 40px;
+	li {
+		&.sharing-item {
+			width: 30%;
+			min-width: 300px + 2px;
+			border: 1px solid $Grey_color5;
+			margin-left: 2em;
+			margin-bottom: 2em;
+			&:nth-of-type(3n+1) {
+				margin-left: 0;
+			}
+			&>a {
+				display: block;
+			}
+			&:hover {
+				@include box-shadow(1px 1px 3px rgba(77, 77, 77, 0.5));
+				border: 1px solid #4ca000;
+				.sharing-title {
+					color: #428c00;
+					font-size: $fz-L;
+				}
+				.sharing-time {
+					color: rgba(42, 90, 0, 0.5);
+				}
+			}
+		}
+	}
+	figure {
+		position: relative;
+	}
+	figcaption {
+		padding: 15px 20px;
+	}
+	hgroup {
+		width: 100%;
+		border-bottom: 1px solid $Grey_color5;
+		padding-bottom: 0.5em;
+	}
+	@include atRoot{
+	&-pic {
+		width: 100%;
+		min-width: 300px;
+		min-height: 180px;
+		overflow: hidden;
+	}
+	&-title {
+		height: 40px;
+		overflow: hidden;
+		color: $DF_color2;
+		font-size: $fz-L;
+	}
+	&-time {
+		text-align: right;
+		color: #428c00;
+	}
+	&-txt {
+		height: 60px;
+		overflow: hidden;
+		margin-bottom: 0;
+		color: $Grey_color4;
+	}
+	};
+}
+
+/*========================================================================*\
+		>>	news1 cnt page    news product
+\*========================================================================*/
+.news_prod {
+	&-intro {
+		%padding {
+			padding: 0 4%;
+		}
+		h1 {
+			@extend %padding;
+			color: #428c00;
+			font-size: 24px;
+			font-weight: bolder;
+		}
+		p {
+			@extend %padding;
+			color: $normal_color2;
+			font-size: $fz-L;
+			letter-spacing: 1px;
+			line-height: 1.2; 
+		}
+	}
+	&-arrival {
+
+	}
+}
+h1.new_arrival {
+	@include bg(0, -390px);
+}
+.news1List {
+	.path {
+		display: inline-block;
+		margin-bottom: 1em;
+	}
+	.prodList {
+		&-wrap {
+			margin-left: 0;
+		}
+		&-container {
+			padding-top: 0;
+			a {
+				padding-top: 0;
+			}
+			.pic>div {
+				height: 180px;
+			}
+		}
+	}
+	.news_prod {
+		&-arrival {
+			li {
+				width: 20%;
+			}
+		}
+	}
+	.btns {
+		margin: 2em auto;
+	}
+}
+
+
+
+.promotions {
+	&_cnt_block {
+		padding: 0 5em;
+		header {
+			border-top: 6px solid $logo_color1;
+			border-bottom: 1px solid $logo_color1;
+			margin-bottom: 1em;
+		}
+		h1 {
+			height: 85px;
+			overflow: hidden;
+			color: #428c01;
+			font-size: 21px;
+		}
+		.btns {
+			margin: 2em auto;
+		}
+	}
+	&_time {
+		margin: 1em 0;
+		text-align: right;
+	}
+}
+
+
+
+
+
+

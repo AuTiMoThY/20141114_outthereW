@@ -1,0 +1,379 @@
+.intro-wrap {
+	// padding-top: 30px;
+	margin-bottom: 2em;
+}
+.intro-container {
+	@include wh(100%, 445px);
+	.intro-block {
+		@include wh(29%, 100%);
+		float: left;
+		overflow: hidden;
+		position: relative;
+		.pic {
+			@include wh;
+			background-position: 100% 0;
+			position: absolute;
+			top: 0;
+			z-index: 10;
+			@include transition(all 0.3s cubic-bezier(0.7,0,0.3,1));
+		}
+	}
+	.intro-txt {
+		@include wh;
+		@include bg(rgba(255, 255, 255, 0.8));
+		padding: 30px;
+		position: absolute;
+		top: 0;
+		z-index: 20;
+		h2 {
+			height: 23px;
+			margin: 0 0 30px 0;
+			padding: 0;
+			@include bg('iconTxt.png');
+			@include transition(all 0.3s cubic-bezier(0.7,0,0.3,1));
+		}
+		p {
+			color: $normal_color2;
+			font-size: $fz-N;
+			line-height: 2;
+			letter-spacing: 1px;
+			@include transition(all 0.3s cubic-bezier(0.7,0,0.3,1));
+		}
+		&~.pic {
+			@include bg(white);
+			background-blend-mode: luminosity;
+		}
+	}
+	h2 {
+		@each $intro, $x, $Y in (intro1, -175px, -89px),
+								(intro2, -175px, -121px),
+								(intro3, -175px, -57px) {
+			&.#{$intro} {
+				@include bg($x, $Y);
+			}
+		}
+		&.intro3 {
+			height: 23px;
+			@include bg(-175px, -57px);
+		}
+	}
+	.intro-pic {
+		@include wh(70%, 100%);
+		.pic {
+			@include wh;
+			@include background-size(cover);
+			background-repeat: no-repeat;
+		}
+	}
+}
+.prod_class {
+	header {
+		height: 40px;
+		@include bg($normal_color2);
+		padding: 9px;
+		margin-bottom: 1em;
+	}
+	h1 {
+		@include bg('iconTxt.png', 0, -184px);
+		padding: 0;
+		margin: 0;
+	}
+	ul {
+		width: 100%;
+	}
+	li {
+		width: 33.3333%;
+		height: 145px;
+		border: 1px solid #e5e5e5;
+		@include bg(#fff);
+		&:hover, &.active {
+			@include bg($normal_color);
+		}
+		&.active {
+			a {
+				color: #fff;
+				@each $class, $x, $y in (prod_class1, -410px, 0),
+										(prod_class2, -410px, -147px),
+										(prod_class3, -410px, -294px) {
+					&.#{$class}:after {
+						@include bg($x, $y);
+					}
+				}
+			}
+		}
+	}
+	a {
+		@include wh;
+		display: block;
+		// @include bg('prod_class.png');
+		padding-top: 3.5em;
+		position: relative;
+		color: $normal_color2;
+		font-size: $fz-XL;
+		text-align: center;
+		@each $class, $x, $y in (prod_class1, -85px, 0),
+								(prod_class2, -85px, -147px),
+								(prod_class3, -85px, -294px) {
+			&.#{$class}:after {
+				@include psudoClass;
+				@include wh(240px, 100%);
+				@include bg('prod_class.png');
+				@include bg($x, $y);
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+		}
+		&:hover {
+			color: #fff;
+			@each $class, $x, $y in (prod_class1, -410px, 0),
+									(prod_class2, -410px, -147px),
+									(prod_class3, -410px, -294px) {
+				&.#{$class}:after {
+					@include bg($x, $y);
+				}
+			}
+		}
+		.txt1 {
+			font-family: $ff-Verdana;
+		}
+	}
+}
+/*========================================================================*\
+		>>	productList_page
+\*========================================================================*/
+.productList_page {
+	#LeftAside {
+		@include bg($normal_color2);
+		padding: 4px;
+		width: 23%;
+		position: absolute;
+		header {
+			padding: 5px;
+			color: #fff;
+			font-size: $fz-XL;
+		}
+		li {
+			@include wh(100%, 55px);
+			float: none;
+			&.active {
+				@each $class, $x, $y in (prod_class1, -125px * 0, -495px),
+										(prod_class2, -125px * 1, -495px),
+										(prod_class3, -125px * 2, -495px) {
+					a.#{$class}:after {
+						@include bg($x, $y);
+					}
+				}
+			}
+		}
+		a {
+			padding-top: 1em;
+			padding-left: 2em;
+			text-align: left;
+			@each $class, $x, $y in (prod_class1, -125px * 0, -441px),
+									(prod_class2, -125px * 1, -441px),
+									(prod_class3, -125px * 2, -441px) {
+				&.#{$class}:after {
+					@include psudoClass;
+					@include bg('prod_class.png');
+					@include bg($x, $y);
+				}
+			}
+			&:hover {
+				color: #fff;
+				@each $class, $x, $y in (prod_class1, -125px * 0, -495px),
+										(prod_class2, -125px * 1, -495px),
+										(prod_class3, -125px * 2, -495px) {
+					&.#{$class}:after {
+						@include bg($x, $y);
+					}
+				}
+			}
+		}
+		a[class*="prod_class"] {
+			&:after {
+				@include wh(125px, 55px);
+			}
+		}
+	}
+}
+
+.prodList {
+	&-wrap {
+		margin-left: 25%;
+	}
+	@include atRoot{
+/*========================================================================*\
+		>>>	productList container
+\*========================================================================*/
+	&-container {
+		padding-top: 1em;
+		li {
+			@include wh(33.33%, 255px);
+		}
+		figure {
+			@include wh;
+			@include bg(#fff);
+			border: 1px solid $Grey_color5;
+			&:hover {
+				border: 1px solid $logo_color1;
+				@include scale(1.05);
+				@include transition(all 0.3s $easing2);
+				position: relative;
+				z-index: 90;
+				&>a.btn.btn {
+					@include box-shadow(0px 1px 5px $logo_color1 - #333);
+				}
+			}
+		}
+		a {
+			@include wh;
+			display: block;
+			position: relative;
+		}
+		.pic {
+			width: 100%;
+			overflow: hidden;
+			&>div {
+				@include wh(100%, 180px);
+				@include background-size(cover);
+				@include bg(50%, 50%);
+				background-repeat: no-repeat;
+			}
+		}
+		figcaption {
+			width: 100%;
+			padding: 10px;
+		}
+		h2.prod_name {
+			height: 31px;
+			padding: 0;
+			margin-bottom: 0.5em;
+			overflow: hidden;
+			/*font*/
+			color: $Grey_color1;
+			font-size: $fz-L;
+			line-height: 1.1;
+		}
+		.price {
+			/*font*/
+			color: $Grey_color1;
+			font-size: $fz-L;
+			font-family: $ff-Helvetica;
+			font-weight: 300;
+			text-align: center;
+			.txt3 {
+				/*font*/
+				font-size: $fz-XL;
+				font-weight: bolder;
+			}
+		}
+	}
+	};
+}
+
+/*========================================================================*\
+		>>	productCnt_page
+\*========================================================================*/
+.prodCnt {
+	&-container {
+		padding-top: 1em;
+	}
+	&-hd {
+		.pic {
+			border: 1px solid #d4d4d4;
+		}
+	}
+	&-inf {
+		width: 54%;
+		float: right;
+		.prod_name {
+			/*font*/
+			color: $footer_color;
+			font-size: $fz-L;
+		}
+		&>section {
+			width: 100%;
+			border-bottom: 1px dotted #d4d4d4;
+			padding: 1em;
+			position: relative;
+		}
+		div[class*="-title"] {
+			position: relative;
+			color: $footer_color;
+			font-size: $fz-N;
+			font-weight: bolder;
+			text-indent: 10px;
+			&:before {
+				@include psudoClass;
+				@include triNext($footer_color, 4px);
+				position: absolute;
+				top: 2px;
+			}
+		}
+
+	}
+	&-data {
+		margin-top: 2em;
+		.tab-content {
+			padding: 0;
+			padding-bottom: 5.5em;
+			border: none;
+		}
+		&-wrap {
+			width: 100%;
+			border: 1px solid #d4d4d4;
+			border-top: none;
+			padding: 3em 0;
+			&~.btns {
+				margin: 1em auto;
+			}
+		}
+		.prod_feature {
+			width: 100%;
+			img {
+				width: 100%;
+				max-width: none;
+			}
+		}
+	}
+}
+.prod_intro {
+	color: $footer_color;
+	font-size: $fz-N;
+	&-cnt {
+		line-height: 1.1;
+	}
+}
+.prod_photo {
+	&-list {
+		padding-top: 10px;
+		li {
+			@include wh(50px);
+			margin-right: 10px;
+			&:hover {
+				@include box-shadow(1px 1px 3px #333);
+				@include hover(-1px, -1px);
+			}
+		}
+	}
+}
+.prod_price {
+	&-cnt {
+		padding-top: 15px;
+		padding-left: 35px;
+		vertical-align: bottom;
+		.txt5 {
+			color: #428c01;
+			font-size: 3em;
+			font-family: $ff-Verdana;
+			font-weight: 600;
+		}
+	}
+}
+
+
+
+
+
+

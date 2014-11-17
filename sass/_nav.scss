@@ -1,0 +1,95 @@
+nav {
+	&.main_nav {
+		@include wh(68%, 100%);
+		float: right;
+		position: relative;
+		ul {
+			height: 25px;
+			position: absolute;
+			bottom: 1.5em;
+			right: 0;
+		}
+		li {
+			@include wh(95px, 100%);
+			// min-width: 95px;
+			margin-left: 1.9em;
+		}
+		a {
+			@include wh(100%, 100%);
+			position: relative;
+			display: block;
+			color: $normal_color2;
+			font-size: $fz-L;
+			line-height: 25px;
+			text-indent: 30px;
+			@include transition(all 0.3s cubic-bezier(0.4, 0, .2, 1));
+			.svg {
+				@include wh(25px);
+				@include background-size(100%);
+				position: absolute;
+				left: 0px;
+				fill: $normal_color2;
+				@include transition(all 0.3s cubic-bezier(0.4, 0, .2, 1));
+			}
+			@each $navItem, $bg in (navItem1, 'navItem1.svg'),
+								   (navItem2, 'navItem2.svg'),
+								   (navItem3, 'navItem3.svg'),
+								   (navItem4, 'navItem4.svg'),
+								   (navItem5, 'navItem5.svg') {
+				&.#{$navItem} {
+					img.svg {
+						@include bg($bg);
+					}
+				}
+			}
+			&:hover, &.active {
+				color: $normal_color;
+				.svg {
+					fill: $normal_color;
+				}
+			}
+			&.navItem5 {
+				.svg {
+					@include rotate(-10deg);
+				}
+			}
+		}
+	}
+}
+/*========================================================================*\
+		>>	nav  quick nav
+\*========================================================================*/
+nav {
+	&.quick_nav {
+		@include wh(100%, 70px);
+		padding: 10px 0;
+		border-bottom: 1px solid $color1;
+		.wrapper {
+			height: 100%;
+		}
+		ul {
+			@include wh(60%, 100%);
+			margin: 0 auto;
+		}
+		li {
+			@include wh(33%, 100%);
+			border-left: 1px solid $color1;
+			&:first-of-type {
+				border-left: none;
+			}
+		}
+		a {
+			@include wh(155px, 50px);
+			@include bg('iconTxt.png');
+			display: block;
+			margin: 0 auto;
+			@each $navItem, $x, $y in (navItem1, 0, 5px),
+									  (navItem2, 0, -57px),
+									  (navItem3, 0, -120px) {
+				&.#{$navItem} {
+					@include bg($x, $y);
+				}
+			}
+		}
+	}
+}
